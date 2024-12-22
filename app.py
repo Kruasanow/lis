@@ -37,40 +37,6 @@ def map():
 def create():
     return render_template('create.html')
 
-# @app.route('/api/addevent', methods=['POST'])
-# def add_event():
-#     if request.method == 'POST':
-#         try:
-#             data = request.get_json(force=True)
-#             print(f'Received data: {data}')
-            
-#             for key in data:
-#                 print(f"data - {data[key]}")
-#                 data[key] = str(data[key]).encode('utf-8')
-
-#             event = Events(
-#                 locations=data['location'],
-#                 coordinates_latitude=data['latitude'],
-#                 coordinates_longitude=data['longitude'],
-#                 img_ways=data['img'],
-#                 descriptions=data['description'],
-#                 short_description=data['short'],
-#                 story=data['story'],
-#                 privates=data['privates'],
-#                 email=data['email']
-#             )
-#             db.session.close()
-#             db.session.add(event)
-#             db.session.commit()
-            
-#             print('Data inserted')
-#             return jsonify({"status": "success", "message": "Данные успешно получены."})
-
-#         except Exception as e:
-#             print(f'Trouble with {e}')
-#             return jsonify({"status": "error", "message": str(e)}), 400
-
-        
 class Login(Resource):
     def post(self):
         data = request.get_json()
@@ -91,14 +57,14 @@ class AddMemoryPlace(Resource):
         data = request.get_json()  
         try:
             event = Events(
-                location = data.get('location'),
+                location= 'location',
                 latitude = data.get('latitude'),
                 longitude = data.get('longitude'),
                 img_ways = data.get('img'),
                 description = data.get('description'),
                 short_description = data.get('short'),
                 story = data.get('story'),
-                permission= data.get('privates'),
+                permission= data.get('privates')
                 )
             db.session.add(event)
             db.session.commit()

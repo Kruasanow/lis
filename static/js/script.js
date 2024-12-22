@@ -1,4 +1,3 @@
-
 // function sendCreateForm(){
 //   $(document).ready(function () {
 //     $("#sendevent").submit(function (e) {
